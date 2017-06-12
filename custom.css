@@ -7,6 +7,10 @@
 /* Content */
 
 
+/* Comments section*/
+.ctcomment-section li{
+    list-style: none;
+}
 /* Sidebar */
 .right-sidebar li{
     list-style: none;
@@ -22,8 +26,3 @@
 
 
 /* Footer */
-
-footer{
-    background-color: #595959;
-    color: #fff;
-}
