@@ -1,3 +1,29 @@
+/* Header */
+
 .intro-header{
     background-image: url('assets/images/home-bg.jpg');
+}
+
+/* Content */
+
+
+/* Sidebar */
+.right-sidebar li{
+    list-style: none;
+}
+
+.right-sidebar ul{
+    padding-left:0 !important;
+}
+
+.right-sidebar .btn{
+    padding:5px !important;
+}
+
+
+/* Footer */
+
+footer{
+    background-color: #595959;
+    color: #fff;
 }

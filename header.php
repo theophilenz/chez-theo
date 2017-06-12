@@ -1,7 +1,16 @@
 <!DOCTYPE html>
 <html <?= language_attributes(); ?> class="no-js">
     <head>
-        <title></title>
+        <title>
+        <?php
+            if(is_home()){
+                echo bloginfo('title') . "- " . get_bloginfo( 'description');
+            }else{
+                echo bloginfo('title') . "- " . get_the_title();
+            }
+            
+        ?>
+        </title>
         <meta charset="<?= bloginfo('charset')?>">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="profile" href="http://gmpg.org/xfn/11">
@@ -39,11 +48,37 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <div class="site-heading">
-                        <h1><?= bloginfo('title') ?></h1>
+                        <h1>
+                            <?php
+                            if (is_home()) {
+                                bloginfo('title');
+                            }if (is_single() || is_page()) {
+                                the_title();
+                            } elseif (is_404()) {
+                                echo 'Whoops';
+                            }
+                            ?>
+                        </h1>
                         <hr class="small">
-                        <span class="subheading"><?= bloginfo('description') ?></span>
+                        
+                        <span class="subheading">
+                            <?php
+                            if (is_single()) {
+                                global $post;
+                                $author_id= get_post_field( 'post_author', $post->ID );
+                                $author_name=get_the_author_meta('display_name', $author_id);
+                                echo 'By '. $author_name;
+                            } else {
+                                bloginfo('description');
+                            }
+                            ?>
+                        </span>
                     </div>
                 </div>
             </div>
         </div>
     </header>
+     <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10">

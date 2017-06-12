@@ -11,5 +11,4 @@
 		get_template_part( 'content-parts/content', 'none' );
 	}
 ?>
-
 <?php get_footer() ?>

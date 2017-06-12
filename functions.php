@@ -1,4 +1,8 @@
 <?php
+
+/**
+ * Registering assets
+ */
 add_action( 'wp_enqueue_scripts', 'theme_assets' );
 function theme_assets()
 {
@@ -18,4 +22,25 @@ function theme_assets()
     wp_enqueue_script("bootstrap-validation", get_template_directory_uri().'/assets/js/jqBootstrapValidation.js', array(), null, true);
 }
 
+/**
+ * Registering menus
+ */
 register_nav_menu( 'header-menu', 'Header Menu' );
+
+
+/**
+ * Registering sidebars
+ */
+add_action( 'widgets_init', 'theme_widget_areas' );
+function theme_widget_areas() {
+    register_sidebar( array(
+        'name' => 'Right',
+        'id' => 'right-sidebar',
+        'description' => 'The sidebar shown on the right of the Chez Théo Theme',
+        'before_widget' => '<li id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</li>',
+		'before_title'  => '<h3 class="widget-title">',
+		'after_title'   => '</h3>',
+    ));
+}
+
