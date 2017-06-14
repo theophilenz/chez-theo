@@ -4,6 +4,12 @@
     background-image: url('assets/images/home-bg.jpg');
 }
 
+
+.subheading a{
+    color: #a5a5a5;
+}
+
+
 /* Content */
 p img{
     max-width: 100% !important;
@@ -13,6 +19,7 @@ p img{
 .ctcomment-section li{
     list-style: none;
 }
+
 /* Sidebar */
 .right-sidebar li{
     list-style: none;
@@ -22,7 +29,8 @@ p img{
     padding-left:0 !important;
 }
 
-.right-sidebar .btn{
+.right-sidebar .btn,
+.not-found-seach-form .btn{
     padding:5px !important;
 }
 

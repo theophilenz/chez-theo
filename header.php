@@ -70,7 +70,9 @@
                                 $author_name=ct_get_author_infos('name');
                                 $author_nickname=ct_get_author_infos('nickname');
                                 echo 'By <a href="/author/'. $author_nickname .'">'.$author_name.'</a>';
-                            } else {
+                            } elseif(is_404()){
+                                echo "We couldn't find this page :(";
+                            }else {
                                 bloginfo('description');
                             }
                             ?>
