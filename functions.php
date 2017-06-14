@@ -1,4 +1,10 @@
 <?php
+/**
+ * ABOUT THIS FUNCTIONS FILE
+ * ALL CUSTOM FUNCTIONS FOR THE THEME ARE ENDICATED BY THE PREFIX "CT_" FOR "CHEZ THÉO". NAME OF THE THEME. 
+ * 
+ */
+
 
 /**
  * Registering assets
@@ -46,7 +52,34 @@ function theme_widget_areas() {
 }
 
 /**
- * Custom theme functions
+ * Adding custom background
+ */
+
+function ct_custom_header_setup() {
+    $setup = array(
+        'default-text-color' => '000',
+        'width'              => 1200,
+        'height'             => 300,
+        'flex-width'         => true,
+        'flex-height'        => true,
+    );
+    add_theme_support( 'custom-header', $setup );
+}
+add_action( 'after_setup_theme', 'ct_custom_header_setup' );
+
+function ct_get_header(){
+    if(has_header_image()){
+        $before= "url('";
+        $after= "')";
+        return ["image", $before.get_header_image().$after];
+    }else{
+        return ["color","#000"];
+    }
+}
+
+/**
+ * Helper function to retrieve author data. 
+ * Self-explanatory. duh.
  */
 
 function ct_get_author_infos($type){
@@ -64,3 +97,12 @@ function ct_get_author_infos($type){
         break;
     }
 }
+
+/**
+ * Starting the customizer API.
+ */
+
+function ct_customize_register( $wp_customize ) {
+   //All our sections, settings, and controls will be added here
+}
+add_action( 'customize_register', 'ct_customize_register' );

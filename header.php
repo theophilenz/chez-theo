@@ -5,10 +5,12 @@
         <?php
             if(is_home()){
                 echo bloginfo('title') . "- " . get_bloginfo( 'description');
+            }elseif(is_404()){
+                echo bloginfo('title') ."- ". "Not found";
             }else{
                 echo bloginfo('title') . "- " . get_the_title();
             }
-            
+
         ?>
         </title>
         <meta charset="<?= bloginfo('charset')?>">
@@ -43,7 +45,7 @@
 
     <!-- Page Header -->
     <!-- Set your background image for this header on the line below. -->
-    <header class="intro-header">
+    <header class="intro-header" style="background-<?= ct_get_header()[0]; ?>: <?= ct_get_header()[1]; ?>">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
@@ -62,7 +64,7 @@
                             ?>
                         </h1>
                         <hr class="small">
-                        
+
                         <span class="subheading">
                             <?php
                             if (is_single()) {
