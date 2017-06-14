@@ -56,6 +56,8 @@
                                 the_title();
                             } elseif (is_404()) {
                                 echo 'Whoops';
+                            } elseif(is_archive()){
+                                echo the_archive_title();
                             }
                             ?>
                         </h1>
@@ -65,9 +67,9 @@
                             <?php
                             if (is_single()) {
                                 global $post;
-                                $author_id= get_post_field( 'post_author', $post->ID );
-                                $author_name=get_the_author_meta('display_name', $author_id);
-                                echo 'By '. $author_name;
+                                $author_name=ct_get_author_infos('name');
+                                $author_nickname=ct_get_author_infos('nickname');
+                                echo 'By <a href="/author/'. $author_nickname .'">'.$author_name.'</a>';
                             } else {
                                 bloginfo('description');
                             }

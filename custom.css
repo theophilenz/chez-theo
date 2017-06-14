@@ -5,7 +5,9 @@
 }
 
 /* Content */
-
+p img{
+    max-width: 100% !important;
+}
 
 /* Comments section*/
 .ctcomment-section li{

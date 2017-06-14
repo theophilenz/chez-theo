@@ -45,3 +45,22 @@ function theme_widget_areas() {
     ));
 }
 
+/**
+ * Custom theme functions
+ */
+
+function ct_get_author_infos($type){
+    global $post;
+    $author_id= get_post_field( 'post_author', $post->ID );
+    switch($type){
+        case 'id':
+        return get_post_field('post_author', $post->ID);
+        break;
+        case 'nickname': 
+        return get_the_author_meta('nickname', $author_id);
+        break;
+        case 'name':
+        return get_the_author_meta('display_name', $author_id);
+        break;
+    }
+}
