@@ -78,6 +78,24 @@ function ct_get_header(){
 }
 
 /**
+ * Adding custom logo
+ * 
+*/
+
+function ct_custom_logo() {
+    $defaults =[
+        'height'      => 50,
+        'width'       => 200,
+        'flex-height' => true,
+        'flex-width'  => true,
+        'header-text' => ['navbar-brand']
+    ];
+    add_theme_support( 'custom-logo', $defaults );
+}
+add_action( 'after_setup_theme', 'ct_custom_logo' );
+
+
+/**
  * Helper function to retrieve author data. 
  * Self-explanatory. duh.
  */

@@ -28,7 +28,15 @@
                     <span class="sr-only">Toggle navigation</span>
                     Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="<?= get_home_url() ?>"><?= bloginfo('title') ?></a>
+                <a class="navbar-brand" href="<?= get_home_url() ?>">
+                <?php 
+                if(has_custom_logo()){
+                    the_custom_logo();
+                }else{
+                    bloginfo('title');
+                }
+                 ?>
+                </a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
