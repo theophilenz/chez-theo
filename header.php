@@ -53,7 +53,13 @@
 
     <!-- Page Header -->
     <!-- Set your background image for this header on the line below. -->
-    <header class="intro-header" style="background-<?= ct_get_header()[0]; ?>: <?= ct_get_header()[1]; ?>">
+    <header class="intro-header" style="
+        <?php if(has_post_thumbnail()): ?>
+            <?php the_post_thumbnail( 'full' ); ?>
+        <?php else: ?>
+            background-<?= ct_get_header()[0]; ?>: <?= ct_get_header()[1]; ?>
+        <?php endif ?>
+    ">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
