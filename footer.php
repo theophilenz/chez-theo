@@ -34,7 +34,13 @@
                             </a>
                         </li>
                     </ul>
-                    <p class="copyright text-muted">&copy;Copyright <?= Date('Y');?>, <?= bloginfo( 'title' ); ?></p>
+                    <p class="copyright text-muted">
+                    <?php if(get_theme_mod("copyright_setting")) : ?>
+                    <?php echo get_theme_mod("copyright_setting"); ?>
+                    <?php else : ?>
+                        &copy;Copyright <?= Date('Y');?>, <?= bloginfo( 'title' ); ?>
+                    <?php endif; ?>
+                    </p>
                     <p class="copyright text-muted">Powered by <a href="http://wordpress.org">WordPress, </a>theme by <a href="http://theophile.me">Théophile Nzungize</a></p>
                 </div>
             </div>

@@ -51,6 +51,55 @@ function theme_widget_areas() {
     ));
 }
 
+
+/**
+ * Starting the customizer API.
+ */
+
+function ct_customize_register( $wp_customize ) {
+   //All our sections, settings, and controls will be added here
+   
+    //**HEADER CUSTOMIZATION SETTINGS**
+
+    // New Theme colors section
+    $wp_customize->add_section( 'colors', array(
+        'title' => 'Theme Colors',
+        'priority' => 100,
+    ));
+
+    // Color picker setting for header background
+    $wp_customize->add_setting( 'ct_bg_color', array(
+        'default' => '#000000'
+    ));
+
+    // Color picker control for header background
+    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'ct_bg_color', array(
+        'label' => 'Header Background Color',
+        'section' => 'colors',
+        'settings' => 'ct_bg_color',
+    )));
+
+     //**FOOTER CUSTOMIZATION SETTINGS**
+
+    //Adding footer section in the customizer   
+    $wp_customize->add_section('footer_settings_section', array(
+        'title'=> 'Footer Copyright Text'
+    ));
+
+    //adding setting for footer text area
+    $wp_customize->add_setting('copyright_setting', array(
+        'default'=> 'Default Copyright For Footer Section'
+    ));
+    
+    //Adding control for the footer copyright
+    $wp_customize->add_control('copyright_setting', array(
+        'label'=> 'Footer Text Here',
+        'section'=>'footer_settings_section',
+        'type'=> 'textarea'
+));
+}
+add_action( 'customize_register', 'ct_customize_register' );
+
 /**
  * Adding custom background
  */
@@ -73,7 +122,7 @@ function ct_get_header(){
         $after= "')";
         return ["image", $before.get_header_image().$after];
     }else{
-        return ["color","#000"];
+        return ["color", get_theme_mod('ct_bg_color')]; //See customizer API section
     }
 }
 
@@ -115,12 +164,3 @@ function ct_get_author_infos($type){
         break;
     }
 }
-
-/**
- * Starting the customizer API.
- */
-
-function ct_customize_register( $wp_customize ) {
-   //All our sections, settings, and controls will be added here
-}
-add_action( 'customize_register', 'ct_customize_register' );
